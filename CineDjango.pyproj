@@ -56,6 +56,8 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="CineDjango\" />
+    <Folder Include="media\" />
+    <Folder Include="media\images\" />
     <Folder Include="Properties\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
@@ -72,9 +74,11 @@
     <Content Include="app\templates\app\registro.html" />
     <Content Include="app\templates\app\genero.html" />
     <Content Include="app\templates\app\voto.html" />
-    <Content Include="db.sqlite3" />
     <None Include="Properties\PublishProfiles\VamosAlCine20220303123020 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\VamosAlCine20220303123020 - Web Deploy.pubxml" />
+    <Content Include="db.sqlite3" />
+    <Content Include="media\images\17040.jpg" />
+    <Content Include="media\images\d234779999571db446b4afdb74af82fe.jpg" />
     <Content Include="requirements.txt" />
     <Content Include="app\static\app\content\bootstrap.css" />
     <Content Include="app\static\app\content\bootstrap.min.css" />

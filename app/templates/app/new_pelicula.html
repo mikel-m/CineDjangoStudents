@@ -5,14 +5,15 @@
 <h3>{{ message }}</h3>
 
 <h1>Insertar una pelicula</h1>
-        <form action="/new_pelicula/" method="POST">{% csrf_token %}
+        <form action="/new_pelicula/" method="POST" enctype="multipart/form-data">{% csrf_token %}
             <table>
                 <tr><th><label for="titulo">Titulo:</label></th><td><input id="titulo" type="text" name="titulo" required /></td></tr>
                 <tr><th><label for="direccion">Direccion:</label></th><td><input id="direccion" type="text" name="direccion" required /></td></tr>
                 <tr><th><label for="anio">Anio:</label></th><td><input id="anio" type="number" min="0" name="anio" required /></td></tr>
                 <tr><th><label for="genero">Genero:</label></th><td><input id="genero" type="text" name="genero" required /></td></tr>
                 <tr><th><label for="sinopsis">Sinopsis:</label></th><td><input id="sinopsis" type="text" name="sinopsis" required /></td></tr>
-                <tr><th><label for="votos">Votos</label></th><td><input id="votos" type="number" name="votos" value="0" readonly /></td></tr>
+                <tr><th><label for="votos">Votos:</label></th><td><input id="votos" type="number" name="votos" value="0" readonly /></td></tr>
+                <tr><th><label for="imagen">Imagen:</label></th><td><input id="imagen" type="file" name="imagen" /></td></tr>
             </table>
             <input type="submit" value="Guardar Pelicula" />
         </form>

@@ -7,6 +7,9 @@ from app.models import Pelicula
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
 
+from django.db import models
+from django.forms import fields
+
 class BootstrapAuthenticationForm(AuthenticationForm):
     """Authentication form which uses boostrap CSS."""
     username = forms.CharField(max_length=254,
@@ -26,4 +29,4 @@ class RegistroForm(forms.Form): #Formulario de registro de usuarios
 class PeliculaForm(forms.ModelForm):
         class Meta:
             model = Pelicula
-            fields = ('titulo','direccion','anio','genero','sinopsis','votos')
+            fields = ('titulo','direccion','anio','genero','sinopsis','votos', 'imagen')

@@ -127,8 +127,11 @@ def voto(request):
 
 def new_pelicula(request):
     if request.method == "POST":
-        form = PeliculaForm(request.POST)
+        form = PeliculaForm(request.POST, request.FILES)
         form.save()
-        return HttpResponseRedirect('../peliculas')
+        # Getting the current instance object to display in the template 
+        img_object = form.instance
+        return render(request, 'app/peliculas.html', {'form':form, 'img_object':img_object})
+        #return HttpResponseRedirect('../peliculas')
     return render(request, 'app/new_pelicula.html')
 
