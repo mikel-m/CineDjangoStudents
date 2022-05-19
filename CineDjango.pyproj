@@ -79,6 +79,7 @@
     <Content Include="db.sqlite3" />
     <Content Include="media\images\17040.jpg" />
     <Content Include="media\images\d234779999571db446b4afdb74af82fe.jpg" />
+    <Content Include="media\images\imagen_no_disponible.png" />
     <Content Include="requirements.txt" />
     <Content Include="app\static\app\content\bootstrap.css" />
     <Content Include="app\static\app\content\bootstrap.min.css" />

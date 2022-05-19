@@ -13,7 +13,7 @@ class Pelicula(models.Model):
 	genero = models.CharField(max_length=60)
 	sinopsis = models.CharField(max_length=700)
 	votos = models.IntegerField(validators=[MaxValueValidator(99999999999)])
-	imagen = models.ImageField(upload_to="images/", null=True, blank=True)
+	imagen = models.ImageField(upload_to="images/", null=True, blank=True, default="images/imagen_no_disponible.png")
 
 	def __unicode__(self):
 		return self.titulo
