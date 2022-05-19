@@ -34,4 +34,6 @@ urlpatterns = [
     path('voto/', views.voto, name='voto'),
     path('new_pelicula/', views.new_pelicula,name='new_pelicula'),
     path('generos/', views.generos,name='generos'),
+    # añadir voto
+    path('update_votos/', views.update_votos, name='update_votos'),
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

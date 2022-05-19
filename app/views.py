@@ -124,7 +124,7 @@ def generos(request):
 def voto(request):
     return render(request, 'app/voto.html')
     
-
+# Añadir pelicula
 def new_pelicula(request):
     if request.method == "POST":
         form = PeliculaForm(request.POST, request.FILES)
@@ -132,3 +132,41 @@ def new_pelicula(request):
         return HttpResponseRedirect('../peliculas')
     return render(request, 'app/new_pelicula.html')
 
+# Votar pelicula
+def voto(request):
+        peliculas = Pelicula.objects.all()
+        return render(request, "app/voto.html", {"peliculas":peliculas})
+
+def update_votos(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            pelicula = Pelicula.objects.get(titulo=request.POST.get('pelis'))
+            id_pelicula = pelicula.id
+            try:
+                id_crit = Critico.objects.get(usuario_id=request.user.id)
+            except Critico.DoesNotExist:
+                id_crit = None
+            if id_crit != None:
+                try:
+                    #pelicula_favorita = Critico.objects.filter(favoritas=request.POST.get('pelis'))
+                    pelicula_favorita = Critico.objects.get(favoritas=id_pelicula, usuario_id=request.user.id)
+                except Critico.DoesNotExist:
+                    pelicula_favorita = None
+                if pelicula_favorita == None:
+                    pelicula.votos = pelicula.votos + 1
+                    pelicula.save()
+                    id_crit.favoritas.add(pelicula.id)
+                    #critico.save()
+                    return render(request, "app/index.html")
+                else:
+                    #messages.warning(request, 'Ya has votado por esta pelicula.')
+                    #message.error(request, "ERROR: Ya has votado por esta pelicula.")
+                    return render(request, 'app/index.html')
+            else:
+                critico = Critico(usuario_id=request.user)
+                pelicula.votos = pelicula.votos + 1
+                pelicula.save()
+                critico.save()
+                critico.favoritas.add(pelicula)
+                critico.save()
+                return render(request, 'app/index.html')
